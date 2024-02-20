@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Voting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="anime" id="one-piece">
+            <img src="luffy.jpeg" alt="One Piece DP" class="dp">
+            <img src="te1-removebg-preview.png" alt="Naruto DP" class="title1">
+            <p class="dialogue"></p>
+            <button class="vote-btn one-piece" onclick="vote('one-piece')">Vote</button>
+            <span class="votes one-piece-votes">0</span>
+        </div>
+        <div class="anime" id="naruto">
+            <img src="naruto2.jpg" alt="Naruto DP" class="dp">
+            <img src="te2-removebg-preview.png" alt="Naruto DP" class="title">
+            <p class="dialogue"></p>
+            <button class="vote-btn naruto" onclick="vote('naruto')">Vote</button>
+            <span class="votes naruto-votes">0</span>
+        </div>
+        <div class="anime" id="bleach">
+            <img src="bleach.jpg" alt="Bleach DP" class="dp">
+            <img src="te3-removebg-preview.png" alt="Naruto DP" class="title2">
+            <p class="dialogue"></p>
+            <button class="vote-btn bleach" onclick="vote('bleach')">Vote</button>
+            <span class="votes bleach-votes">0</span>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve vote counts from localStorage or default to 0
+        let onePieceVotes = localStorage.getItem('onePieceVotes') || 0;
+        let narutoVotes = localStorage.getItem('narutoVotes') || 0;
+        let bleachVotes = localStorage.getItem('bleachVotes') || 0;
+
+        // Update vote counts on the page
+        document.querySelector('.one-piece-votes').textContent = onePieceVotes;
+        document.querySelector('.naruto-votes').textContent = narutoVotes;
+        document.querySelector('.bleach-votes').textContent = bleachVotes;
+
+        // Function to handle voting
+        function vote(anime) {
+            switch (anime) {
+                case 'one-piece':
+                    onePieceVotes++;
+                    localStorage.setItem('onePieceVotes', onePieceVotes);
+                    document.querySelector('.one-piece-votes').textContent = onePieceVotes;
+                    break;
+                case 'naruto':
+                    narutoVotes++;
+                    localStorage.setItem('narutoVotes', narutoVotes);
+                    document.querySelector('.naruto-votes').textContent = narutoVotes;
+                    break;
+                case 'bleach':
+                    bleachVotes++;
+                    localStorage.setItem('bleachVotes', bleachVotes);
+                    document.querySelector('.bleach-votes').textContent = bleachVotes;
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
